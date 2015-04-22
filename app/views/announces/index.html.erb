@@ -19,6 +19,8 @@
           <% @announces.each do |announce| %>
            <h3><%=link_to announce.name, announce_path(announce)%></h3>
           <p><%= announce.text %></p>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank"> <i class="fa fa-facebook"> </i>
+          </a>
           <% end %>
         </div>
       </div>
@@ -28,6 +30,7 @@
             <% @announces.each do |announce| %>
              <h3><%=link_to announce.name, announce_path(announce)%></h3>
             <p><%= announce.text %></p>
+            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-width="200" data-type="button_count"></div>
             <% end %>
         </div>
       </div>

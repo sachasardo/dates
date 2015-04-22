@@ -1,13 +1,27 @@
-<div class="text-center">
-  <h2>Ajoute ta propre histoire</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <h2>Ajoute ta propre histoire</h2>
 
-  <%= form_for(@announce) do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+      <%= form_for(@announce) do |f| %>
+        <div class="form-group">
+          <%= f.label :name, "Titre de la rencontre" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
 
-    <%= f.label :text %>
-    <%= f.text_field :text %>
+        <div class="form-group">
+          <%= f.label :name, "Titre de la rencontre" %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
 
-    <%= f.submit %>
-  <% end %>
+        <div class="form-group">
+          <%= f.label :text, "Racontez votre date" %>
+          <%= f.text_area :text, class: "form-control" %>
+        </div>
+
+        <%= f.submit "Poster", class: "btn btn-primary" %>
+      <% end %>
+
+    </div>
+  </div>
 </div>
