@@ -1,6 +1,7 @@
 class AnnouncesController < ApplicationController
   def index
-    @announces = Announce.all
+    @good_dates = Announce.good_dates
+    @bad_dates = Announce.bad_dates
   end
 
   def new

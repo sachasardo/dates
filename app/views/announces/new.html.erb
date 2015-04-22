@@ -5,8 +5,8 @@
 
       <%= form_for(@announce) do |f| %>
         <div class="form-group">
-          <%= f.label :name, "Titre de la rencontre" %>
-          <%= f.text_field :name, class: "form-control" %>
+          <%= f.label :good, "Type de rencontre" %>
+          <%= f.select :good, [["Good date", true], ["Bad date", false]], {}, {class: "form-control"} %>
         </div>
 
         <div class="form-group">

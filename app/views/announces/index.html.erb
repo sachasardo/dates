@@ -1,44 +1,24 @@
-<div class="bg-blue text-padded">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-xs-12">
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="bg-blue text-center">
         <h1> Good Dates / Bad Dates</h1>
       </div>
     </div>
-  </div>
-</div>
-
-
-
-<div class="bg-white padded">
-  <div class="container text-center">
-    <div class="row">
-      <div class="col-xs-6">
-        <div class="card">
-          <h2>Good Dates</h2>
-          <% @announces.each do |announce| %>
-           <h3><%=link_to announce.name, announce_path(announce)%></h3>
-          <p><%= announce.text %></p>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank"> <i class="fa fa-facebook"> </i>
-          </a>
-          <% end %>
-        </div>
-      </div>
-        <div class="col-xs-6">
-          <div class="card padded">
-          <h2>Bad Dates</h2>
-            <% @announces.each do |announce| %>
-             <h3><%=link_to announce.name, announce_path(announce)%></h3>
-            <p><%= announce.text %></p>
-            <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-width="200" data-type="button_count"></div>
-            <% end %>
-        </div>
-      </div>
+    <div class="col-xs-6 bg-white border-light min-height-600 padding-15">
+      <h2 class="text-center">Good Dates</h2>
+      <% @good_dates.each do |announce| %>
+        <%= render "announce", announce: announce %>
+      <% end %>
     </div>
-    <div class="col-xs-12 padded">
+    <div class="col-xs-6 bg-white border-light min-height-600 padding-15">
+      <h2 class="text-center">Bad Dates</h2>
+      <% @bad_dates.each do |announce| %>
+        <%= render "announce", announce: announce %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 padded text-center">
       <%= link_to "Ajoute toi aussi ton histoire", new_announce_path, class:'btn btn-primary'%>
     </div>
   </div>
 </div>
-
-

@@ -31,3 +31,33 @@
   background: $purple;
   color: white;
 }
+.bg-white {
+  background: white;
+}
+.border-light {
+  border: 1px solid rgb(220, 220, 220);
+}
+.border-radius-2 {
+  border-radius: 2px;
+}
+.min-height-600 {
+  min-height: 600px;
+}
+.padding-left-none {
+  padding-left: 0;
+}
+.padding-15 {
+  padding: 15px;
+}
+.announce-link {
+  color: rgb(38, 115, 176);
+  font-weight: 600;
+  font-size: 13px;
+}
+.time-ago {
+  color: rgba(0, 39, 59, 0.34902);
+  font-size: 13px;
+}
+.text-light {
+  font-weight: 300;
+}

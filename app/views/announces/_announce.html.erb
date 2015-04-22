@@ -1,0 +1,14 @@
+<div class="announce" id="<%= "announce_#{announce.id}" %>">
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="margin-none list-unstyled list-inline">
+        <li class="padding-left-none announce-link"><%= announce.name %></li>
+        <li class="padding-left-none time-ago"><%= time_ago_in_words(announce.created_at) + " ago" %></li>
+      </ul>
+      <%= simple_format announce.text, class: "text-light" %>
+    </div>
+
+  </div>
+</div>
+<a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank"> <i class="fa fa-facebook"> </i>
+</a>
