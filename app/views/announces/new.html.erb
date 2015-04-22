@@ -1,9 +1,13 @@
-<%= form_for(@announce) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+<div class="text-center">
+  <h2>Ajoute ta propre histoire</h2>
 
-  <%= f.label :text %>
-  <%= f.text_field :text %>
+  <%= form_for(@announce) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
 
-  <%= f.submit %>
-<% end %>
+    <%= f.label :text %>
+    <%= f.text_field :text %>
+
+    <%= f.submit %>
+  <% end %>
+</div>

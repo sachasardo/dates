@@ -1,18 +1,41 @@
-<div class="card text-center">
-  <h2> Good Dates / Bad Dates</h2>
-</div>
-
-
-<div class="text-center">
-  <% @announces.each do |announce| %>
-    <div class="card1">
-    <h2><%=link_to announce.name, announce_path(announce), class:'btn btn-danger'%></h2>
-    <p><%= announce.text %></p>
+<div class="bg-blue text-padded">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-xs-12">
+        <h1> Good Dates / Bad Dates</h1>
+      </div>
     </div>
-  <% end %>
-
+  </div>
 </div>
 
-<div class="text-center">
-  <%= link_to "Ajoute toi aussi ton histoire", new_announce_path, class:'btn btn-primary'%>
+
+
+<div class="bg-white padded">
+  <div class="container text-center">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="card">
+          <h2>Good Dates</h2>
+          <% @announces.each do |announce| %>
+           <h3><%=link_to announce.name, announce_path(announce)%></h3>
+          <p><%= announce.text %></p>
+          <% end %>
+        </div>
+      </div>
+        <div class="col-xs-6">
+          <div class="card padded">
+          <h2>Bad Dates</h2>
+            <% @announces.each do |announce| %>
+             <h3><%=link_to announce.name, announce_path(announce)%></h3>
+            <p><%= announce.text %></p>
+            <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-12 padded">
+      <%= link_to "Ajoute toi aussi ton histoire", new_announce_path, class:'btn btn-primary'%>
+    </div>
+  </div>
 </div>
+
+
