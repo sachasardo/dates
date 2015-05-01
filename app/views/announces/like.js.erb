@@ -1,4 +1,10 @@
-$('#likeAnnounce_' + '<%= @announce.id %>').html('<i class="fa fa-thumbs-o-up"></i><i class="hidden-xs"> Unlike</i>');
-$('#likeAnnounce_' + '<%= @announce.id %>').addClass('liked');
-$('#likeAnnounce_' + '<%= @announce.id %>').css('text-decoration', 'none');
-$('#likeAnnounce_' + '<%= @announce.id %>').attr('href', '<%= unlike_offer_path(@offer) %>');
+<% if @announce.errors.any? %>
+  // Render new review form with errors
+<% else %>
+  // Create a paragraph for the new review. But hide it.
+  $('#likeAnnounce_' + '<%= @announce.id %>').html('<i class="fa fa-thumbs-o-up"></i> Unlike (<%= @announce.get_likes.size %>)');
+  $('#likeAnnounce_' + '<%= @announce.id %>').addClass('liked');
+  $('#likeAnnounce_' + '<%= @announce.id %>').css('text-decoration', 'none');
+  $('#likeAnnounce_' + '<%= @announce.id %>').attr('href', '<%= unlike_announce_path(@announce) %>');
+<% end %>
+

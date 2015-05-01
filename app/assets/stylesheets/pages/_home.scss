@@ -15,3 +15,28 @@
   border-radius: 4px;
   box-shadow: 1px 2px 2px 2px rgba(0, 0, 0, 0.2);
 }
+
+.btn-like-share {
+  width: 100%;
+}
+
+.btn-like-share:hover {
+  background-color: whitesmoke;
+  color: rgb(50, 183, 150);
+}
+
+.btn-like-share:focus {
+  color: rgb(50, 183, 150);
+}
+
+.text-light {
+  color: rgb(50, 183, 150);
+}
+
+.panel-footer {
+  background-color: white;
+}
+
+body {
+  font-size: 14px;
+}

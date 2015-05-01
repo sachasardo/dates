@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :announces do
     member do
       put :like, to: "announces#like"
+      put :unlike, to: "announces#unlike"
     end
   end
 
