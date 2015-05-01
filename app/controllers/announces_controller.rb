@@ -3,6 +3,12 @@ class AnnouncesController < ApplicationController
   def index
     @good_dates = Announce.good_dates
     @bad_dates = Announce.bad_dates
+    if user_signed_in?
+      @user = current_user
+    else
+      ip = request.remote_ip
+      @user = VotingSession.find_or_create_by(ip_address: ip)
+    end
   end
 
   def new
@@ -32,7 +38,13 @@ class AnnouncesController < ApplicationController
 
   def like
     find_announce
-    @announce.liked_by current_user
+    if user_signed_in?
+      @user = current_user
+    else
+      ip = request.remote_ip
+      @user = VotingSession.find_or_create_by(ip_address: ip)
+    end
+    @announce.liked_by @user
     respond_to do |format|
       format.html { render :index }
       format.js
@@ -41,7 +53,13 @@ class AnnouncesController < ApplicationController
 
   def unlike
     find_announce
-    @announce.unliked_by current_user
+    if user_signed_in?
+      @user = current_user
+    else
+      ip = request.remote_ip
+      @user = VotingSession.find_or_create_by(ip_address: ip)
+    end
+    @announce.unliked_by @user
     respond_to do |format|
       format.html { render :index }
       format.js
