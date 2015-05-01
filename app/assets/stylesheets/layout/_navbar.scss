@@ -5,7 +5,7 @@ $navbar-color: $gray-light;
 $navbar-hover-color: $yellow;
 $navbar-font-family: $navbar-font;
 $navbar-font-size: 14px;
-$navbar-text-transform: capitalize;
+// $navbar-text-transform: capitalize;
 $navbar-font-weight: 300;
 $navbar-letter-spacing: 1.5px;
 $navbar-font-family: $navbar-font;
@@ -40,11 +40,12 @@ $navbar-profile-border-width: 2px;
  * SCSS code
  * ------------------------------------- */
 .navbar-wagon {
+  padding: 13px 12px 0 12px;
   background: $navbar-bg;
   font-family: $navbar-font-family;
   border: none;
   font-size: $navbar-font-size;
-  text-transform: $navbar-text-transform;
+  // text-transform: $navbar-text-transform;
   font-weight: $navbar-font-weight;
   letter-spacing: $navbar-letter-spacing;
   padding-left: $navbar-horizontal-padding;
