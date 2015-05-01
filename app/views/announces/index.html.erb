@@ -17,3 +17,10 @@
     </div>
   </div>
 </div>
+<%= content_for :after_js do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      $('.social-share-button-facebook').html('<i class="fa fa-facebook"></i> Share');
+    })
+  <% end %>
+<% end %>
