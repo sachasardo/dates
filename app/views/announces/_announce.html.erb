@@ -24,9 +24,9 @@
         <% end %>
       </div>
       <div class="col-xs-6">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" class="btn btn-like-share" target="_blank">
-          <i class="fa fa-facebook"></i> Share
-        </a>
+        <div class="btn btn-like-share">
+          <%= social_share_button_tag(announce.name, url: "http://localhost:3000", popup: true) %>
+        </div>
       </div>
     </div>
   </div>

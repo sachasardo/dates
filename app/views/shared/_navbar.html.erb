@@ -11,6 +11,8 @@
       <a class="navbar-brand padding-left" href="/">
         <i class="fa fa-thumbs-o-up"></i> <i class="fa fa-heart"></i> <i class="fa fa-thumbs-o-down"></i>
       </a>
+      <ul class="nav navbar-nav navbar-center">
+        <h4>Good Dates / Bad Dates</h4>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,10 +20,12 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <%= current_user.email %>
-          <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: "btn btn-danger" %>
+          <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: "btn btn-primary" %>
         <% else %>
           <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
-          <%= link_to 'Sign in', new_user_session_path, class: "btn btn-success" %>
+          <%= link_to 'Sign in', new_user_session_path, class: "btn btn-primary" %>
+          <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
+
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
