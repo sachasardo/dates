@@ -25,6 +25,7 @@
           <% else %>
             <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-primary" %>
             <%= link_to 'Sign in', new_user_session_path, class: "btn btn-success" %>
+            <%= link_to "Connect with Facebook", user_omniauth_authorize_path(:facebook) %>
           <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
