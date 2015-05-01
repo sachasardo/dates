@@ -24,21 +24,13 @@
             <% end %>
           <% end %>
         <% else %>
-          <% if @ip_address.find_voted_items.include? announce %>
-            <%= link_to unlike_announce_path(announce), remote: true, class: "btn btn-like-share liked", id: "likeAnnounce_#{announce.id}", method: :put do %>
-              <i class="fa fa-thumbs-o-up"></i> Unlike (<%= announce.get_likes.size %>)
-            <% end %>
-          <% else %>
-            <%= link_to like_announce_path(announce), remote: true, class: "btn btn-like-share", id: "likeAnnounce_#{announce.id}", method: :put do %>
-              <i class="fa fa-thumbs-o-up"></i> Like (<%= announce.get_likes.size %>)
-            <% end %>
-          <% end %>
+
         <% end %>
       </div>
       <div class="col-xs-6">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" class="btn btn-like-share" target="_blank">
-          <i class="fa fa-facebook"></i> Share
-        </a>
+        <div class="btn btn-like-share">
+          <%= social_share_button_tag(announce.name, url: "http://localhost:3000", popup: true) %>
+        </div>
       </div>
     </div>
   </div>

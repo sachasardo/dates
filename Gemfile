@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'social-share-button'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'devise'
