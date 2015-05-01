@@ -13,7 +13,7 @@
   <div class="panel-footer">
     <div class="row">
       <div class="col-xs-6">
-        <% if @user.find_voted_items.include? announce %>
+        <% if user.find_voted_items.include? announce %>
           <%= link_to unlike_announce_path(announce), remote: true, class: "btn btn-like-share liked", id: "likeAnnounce_#{announce.id}", method: :put do %>
             <i class="fa fa-thumbs-o-up"></i> Unlike (<%= announce.get_likes.size %>)
           <% end %>
