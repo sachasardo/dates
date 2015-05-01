@@ -16,9 +16,12 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
+<%= render 'shared/navbar' %>
+<%= render 'shared/flashes' %>
+
 <%= yield %>
 
-<%= render 'shared/navbar' %>
+
 
 </body>
 </html>
