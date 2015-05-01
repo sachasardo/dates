@@ -1,0 +1,4 @@
+$('#likeAnnounce_' + '<%= @announce.id %>').html('<i class="fa fa-star"></i><i class="hidden-xs"> Like</i>');
+$('#likeAnnounce_' + '<%= @announce.id %>').removeClass('liked');
+$('#likeAnnounce_' + '<%= @announce.id %>').css('text-decoration', 'none');
+$('#likeAnnounce_' + '<%= @announce.id %>').attr('href', '<%= like_annonce_path(@announce) %>');

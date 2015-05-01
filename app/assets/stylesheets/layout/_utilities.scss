@@ -61,3 +61,15 @@
 .text-light {
   font-weight: 300;
 }
+.announce a.liked {
+ color: #FFB400 ;
+}
+
+.announce a.liked:hover {
+ color: rgb(119, 119, 119);
+ text-decoration: none;
+}
+
+.liked {
+ color: #FFB400 ;
+}
