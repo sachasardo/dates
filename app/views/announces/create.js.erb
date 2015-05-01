@@ -1,0 +1,18 @@
+<% if @announce.errors.any? %>
+  // Render new review form with errors
+<% else %>
+  // Create a paragraph for the new review. But hide it.
+  var new_announce = $("<%= j render 'announce', announce: @announce, user: @announce.user %>").hide();
+  // Add it to the DOM, at the end of the existing reviews. It's still hidden.
+  <% if @announce.good %>
+    $('#good-dates').prepend(new_announce);
+    // Show the new review with an animation!
+  <% else %>
+    $('#bad-dates').prepend(new_announce);
+  <% end %>
+    new_announce.slideDown();
+    // Remove the text from the content textarea.
+    $('#announce_name').val('');
+    $('#announce_text').val('');
+    $('.social-share-button-facebook').html('<i class="fa fa-facebook"></i> Share');
+<% end %>
