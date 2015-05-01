@@ -1,16 +1,68 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-6 min-height-600 padding-15">
-      <h2 class="text-center">Good Dates</h2>
-      <% @good_dates.each do |announce| %>
-        <%= render "announce", announce: announce %>
-      <% end %>
+      <h2 class="text-center"><i class="fa fa-thumbs-o-up"></i> dates</h2>
+      <div class="btn btn-add" id="add-good"><i class="fa fa-plus"></i></div>
+      <div class="panel panel-default hidden" id="new-good">
+        <%= form_for @announce, method: :post, url: announces_path, remote: true, id: "new-good" do |f| %>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= f.text_field :name, placeholder: "Titre", class: "form-control border-clean" %>
+                </div>
+                <div class="form-group margin-btm-none">
+                  <%= f.text_area :text, placeholder: "Racontez votre date", style: "resize: none", class: "form-control border-clean" %>
+                </div>
+                <%= f.hidden_field :good, value: true %>
+              </div>
+            </div>
+          </div>
+          <% if user_signed_in? %>
+            <div class="panel-footer text-right" id="panel-footer-posts">
+              <%= f.submit "Poster", class: "btn btn-post" %>
+            </div>
+          <% else %>
+            <div class="panel-footer text-right" id="panel-footer-posts">
+              <%= link_to "Poster", new_user_session_path, class: "btn btn-post" %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div id="good-dates">
+        <% @good_dates.each do |announce| %>
+          <%= render "announce", announce: announce, user: @user %>
+        <% end %>
+      </div>
     </div>
     <div class="col-xs-6 min-height-600 padding-15">
-      <h2 class="text-center">Bad Dates</h2>
-      <% @bad_dates.each do |announce| %>
-        <%= render "announce", announce: announce %>
-      <% end %>
+      <h2 class="text-center"><i class="fa fa-thumbs-o-down"></i> dates</h2>
+      <div class="btn btn-add" id="add-bad"><i class="fa fa-plus"></i></div>
+      <div class="panel panel-default hidden" id="new-bad">
+        <%= form_for @announce, method: :post, url: announces_path, remote: true do |f| %>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <%= f.text_field :name, placeholder: "Titre", class: "form-control border-clean" %>
+                </div>
+                <div class="form-group margin-btm-none">
+                  <%= f.text_area :text, placeholder: "Racontez votre date", style: "resize: none", class: "form-control border-clean" %>
+                </div>
+                <%= f.hidden_field :good, value: false %>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer text-right" id="panel-footer-posts">
+            <%= f.submit "Poster", class: "btn btn-post" %>
+          </div>
+        <% end %>
+      </div>
+      <div id="bad-dates">
+        <% @bad_dates.each do |announce| %>
+          <%= render "announce", announce: announce, user: @user %>
+        <% end %>
+      </div>
     </div>
     <div class="col-xs-12 padded text-center">
       <%= link_to "Ajoute toi aussi ton histoire", new_announce_path, class:'btn btn-primary'%>
@@ -21,6 +73,14 @@
   <%= javascript_tag do %>
     $(document).ready(function() {
       $('.social-share-button-facebook').html('<i class="fa fa-facebook"></i> Share');
+      $('#add-good').on('click', function() {
+        $('#new-good').hide().removeClass('hidden').slideDown();
+        $(this).addClass('hidden')
+      })
+      $('#add-bad').on('click', function() {
+        $('#new-bad').hide().removeClass('hidden').slideDown();
+        $(this).addClass('hidden')
+      })
     })
   <% end %>
 <% end %>
