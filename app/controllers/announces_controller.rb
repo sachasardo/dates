@@ -1,14 +1,15 @@
 class AnnouncesController < ApplicationController
   before_action :authenticate_user!, only: :create
   def index
-    @good_dates = Announce.good_dates
-    @bad_dates = Announce.bad_dates
+    @good_dates = Announce.good_dates.sort_by(&:created_at).reverse!
+    @bad_dates = Announce.bad_dates.sort_by(&:created_at).reverse!
     if user_signed_in?
       @user = current_user
     else
       ip = request.remote_ip
       @user = VotingSession.find_or_create_by(ip_address: ip)
     end
+    @announce = Announce.new
   end
 
   def new
@@ -19,9 +20,15 @@ class AnnouncesController < ApplicationController
     @announce = Announce.new(announce_params)
     @announce.user = current_user
     if @announce.save
-      redirect_to announce_path(@announce)
+      respond_to do |format|
+        format.html { redirect_to :index }
+        format.js
+      end
     else
-      render :new
+      respond_to do |format|
+        format.html { redirect_to :index }
+        format.js
+      end
     end
   end
 
