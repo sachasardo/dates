@@ -1,4 +1,5 @@
 class AnnouncesController < ApplicationController
+  before_action :authenticate_user!, only: :create
   def index
     @good_dates = Announce.good_dates
     @bad_dates = Announce.bad_dates
