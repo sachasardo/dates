@@ -9,8 +9,8 @@ class AnnouncesController < ApplicationController
   end
 
   def create
-     @announce = Announce.new(announce_params)
-
+    @announce = Announce.new(announce_params)
+    @announce.user = current_user
     if @announce.save
       redirect_to announce_path(@announce)
     else
@@ -27,6 +27,24 @@ class AnnouncesController < ApplicationController
 
   def show
     find_announce
+  end
+
+  def like
+    find_announce
+    @announce.liked_by current_user
+    respond_to do |format|
+      format.html { render :index }
+      format.js
+    end
+  end
+
+  def unlike
+    find_announce
+    @announce.unliked_by current_user
+    respond_to do |format|
+      format.html { render :index }
+      format.js
+    end
   end
 
   private

@@ -7,8 +7,15 @@
       </ul>
       <%= simple_format announce.text, class: "text-light" %>
     </div>
-
+    <div class="col-xs-6">
+      <%= link_to like_announce_path(announce), remote: true, class: "", id: "likeAnnounce_#{announce.id}", method: :put do %>
+        <i class="fa fa-thumbs-o-up"></i> Like (<%= announce.get_likes.size %>)
+      <% end %>
+    </div>
+    <div class="col-xs-6">
+      <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
+        <i class="fa fa-facebook"></i> Share
+      </a>
+    </div>
   </div>
 </div>
-<a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank"> <i class="fa fa-facebook"> </i>
-</a>
