@@ -20,9 +20,9 @@ ActiveRecord::Schema.define(version: 20150501094605) do
     t.string   "name"
     t.integer  "stars"
     t.string   "key_words"
+    t.text     "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "text"
     t.boolean  "good"
   end
 
