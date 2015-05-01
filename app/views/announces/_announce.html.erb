@@ -1,21 +1,45 @@
-<div class="announce" id="<%= "announce_#{announce.id}" %>">
-  <div class="row">
-    <div class="col-xs-12">
-      <ul class="margin-none list-unstyled list-inline">
-        <li class="padding-left-none announce-link"><%= announce.name %></li>
-        <li class="padding-left-none time-ago"><%= time_ago_in_words(announce.created_at) + " ago" %></li>
-      </ul>
-      <%= simple_format announce.text, class: "text-light" %>
+<div class="announce panel panel-default" id="<%= "announce_#{announce.id}" %>">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="margin-none list-unstyled list-inline">
+          <li class="padding-left-none announce-link"><%= announce.name %></li>
+          <li class="padding-left-none time-ago"><%= time_ago_in_words(announce.created_at) + " ago" %></li>
+        </ul>
+        <%= simple_format announce.text, class: "text-light" %>
+      </div>
     </div>
-    <div class="col-xs-6">
-      <%= link_to like_announce_path(announce), remote: true, class: "", id: "likeAnnounce_#{announce.id}", method: :put do %>
-        <i class="fa fa-thumbs-o-up"></i> Like (<%= announce.get_likes.size %>)
-      <% end %>
-    </div>
-    <div class="col-xs-6">
-      <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" target="_blank">
-        <i class="fa fa-facebook"></i> Share
-      </a>
+  </div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-xs-6">
+        <% if user_signed_in? %>
+          <% if current_user.find_voted_items.include? announce %>
+            <%= link_to unlike_announce_path(announce), remote: true, class: "btn btn-like-share liked", id: "likeAnnounce_#{announce.id}", method: :put do %>
+              <i class="fa fa-thumbs-o-up"></i> Unlike (<%= announce.get_likes.size %>)
+            <% end %>
+          <% else %>
+            <%= link_to like_announce_path(announce), remote: true, class: "btn btn-like-share", id: "likeAnnounce_#{announce.id}", method: :put do %>
+              <i class="fa fa-thumbs-o-up"></i> Like (<%= announce.get_likes.size %>)
+            <% end %>
+          <% end %>
+        <% else %>
+          <% if @ip_address.find_voted_items.include? announce %>
+            <%= link_to unlike_announce_path(announce), remote: true, class: "btn btn-like-share liked", id: "likeAnnounce_#{announce.id}", method: :put do %>
+              <i class="fa fa-thumbs-o-up"></i> Unlike (<%= announce.get_likes.size %>)
+            <% end %>
+          <% else %>
+            <%= link_to like_announce_path(announce), remote: true, class: "btn btn-like-share", id: "likeAnnounce_#{announce.id}", method: :put do %>
+              <i class="fa fa-thumbs-o-up"></i> Like (<%= announce.get_likes.size %>)
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="col-xs-6">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=example.org" class="btn btn-like-share" target="_blank">
+          <i class="fa fa-facebook"></i> Share
+        </a>
+      </div>
     </div>
   </div>
 </div>

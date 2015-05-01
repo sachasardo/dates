@@ -51,7 +51,7 @@ class AnnouncesController < ApplicationController
   private
 
   def announce_params
-    params.require(:announce).permit(:name, :text)
+    params.require(:announce).permit(:name, :text, :good)
   end
 
   def find_announce
