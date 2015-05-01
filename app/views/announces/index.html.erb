@@ -1,17 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
-      <div class="bg-blue text-center">
-        <h1> Good Dates / Bad Dates</h1>
-      </div>
-    </div>
-    <div class="col-xs-6 bg-white border-light min-height-600 padding-15">
+    <div class="col-xs-6 min-height-600 padding-15">
       <h2 class="text-center">Good Dates</h2>
       <% @good_dates.each do |announce| %>
         <%= render "announce", announce: announce %>
       <% end %>
     </div>
-    <div class="col-xs-6 bg-white border-light min-height-600 padding-15">
+    <div class="col-xs-6 min-height-600 padding-15">
       <h2 class="text-center">Bad Dates</h2>
       <% @bad_dates.each do |announce| %>
         <%= render "announce", announce: announce %>
